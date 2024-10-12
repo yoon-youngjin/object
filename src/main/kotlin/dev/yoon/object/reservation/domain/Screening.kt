@@ -1,18 +1,27 @@
 package dev.yoon.`object`.reservation.domain
 
-import java.time.DayOfWeek
+import dev.yoon.`object`.generic.Money
 import java.time.LocalDateTime
-import java.time.LocalTime
 
 data class Screening(
-    val id: Long,
-    val movieId: Long,
+    val movie: Movie,
     val sequence: Int,
-    val screeningTime: LocalDateTime,
+    val whenScreened: LocalDateTime,
 ) {
-    fun isPlayedIn(dayOfWeek: DayOfWeek, startTime: LocalTime, endTime: LocalTime): Boolean {
-        return screeningTime.dayOfWeek == dayOfWeek
-                && (this.screeningTime.toLocalTime() == startTime || this.screeningTime.toLocalTime().isAfter(startTime))
-                && (this.screeningTime.toLocalTime() == endTime || this.screeningTime.toLocalTime().isBefore(endTime))
+    fun reserve(customer: Customer, audienceCount: Int): Reservation {
+        val fee = movie.calculateFee(this).times(audienceCount.toDouble())
+        return Reservation(customer, this, audienceCount, fee)
+    }
+
+    fun getFixedFee(): Money {
+        return movie.fee
+    }
+
+    fun isSequence(sequence: Int): Boolean {
+        return this.sequence == sequence
+    }
+
+    fun getStartTime(): LocalDateTime {
+        return whenScreened
     }
 }

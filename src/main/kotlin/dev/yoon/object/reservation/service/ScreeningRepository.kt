@@ -1,9 +1,9 @@
-package dev.yoon.`object`.reservation.persistence
+package dev.yoon.`object`.reservation.service
 
 import dev.yoon.`object`.reservation.domain.Screening
 
 interface ScreeningRepository {
-    fun getScreening(screeningId: Long): Screening
+    fun find(id: Long): Screening?
 
     fun insert(screening: Screening)
 }
