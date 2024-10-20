@@ -4,8 +4,8 @@ import dev.yoon.`object`.generic.Money
 
 class AmountDiscountPolicy(
     private val discountAmount: Money,
-    conditions: List<DummyDiscountCondition>
-) : DiscountPolicy(conditions) {
+    conditions: List<DiscountCondition>,
+) : DefaultDiscountPolicy(conditions) {
     override fun getDiscountAmount(screening: Screening): Money {
         return discountAmount
     }

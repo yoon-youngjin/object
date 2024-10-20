@@ -1,9 +1,9 @@
 package dev.yoon.`object`.reservation.service
 
-import dev.yoon.`object`.reservation.domain.DiscountPolicy
+import dev.yoon.`object`.reservation.domain.DefaultDiscountPolicy
 
 interface DiscountPolicyRepository {
-    fun getDiscountPolicy(movieId: Long): DiscountPolicy
+    fun getDiscountPolicy(movieId: Long): DefaultDiscountPolicy
 
-    fun insert(discountPolicy: DiscountPolicy)
+    fun insert(defaultDiscountPolicy: DefaultDiscountPolicy)
 }

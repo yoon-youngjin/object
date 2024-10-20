@@ -4,9 +4,9 @@ import dev.yoon.`object`.generic.Money
 
 data class Movie(
     val fee: Money,
-    val discountPolicy: DiscountPolicy,
+    val defaultDiscountPolicy: DefaultDiscountPolicy,
 ) {
     fun calculateFee(screening: Screening): Money {
-        return fee.minus(discountPolicy.calculateDiscount(screening))
+        return fee.minus(defaultDiscountPolicy.calculateDiscount(screening))
     }
 }

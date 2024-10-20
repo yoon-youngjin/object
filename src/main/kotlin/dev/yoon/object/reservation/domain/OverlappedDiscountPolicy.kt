@@ -3,9 +3,9 @@ package dev.yoon.`object`.reservation.domain
 import dev.yoon.`object`.generic.Money
 
 class OverlappedDiscountPolicy(
-    val policies: List<DiscountPolicy>,
+    private val policies: List<DefaultDiscountPolicy>,
     conditions: List<DiscountCondition>,
-) : DiscountPolicy(conditions) {
+) : DefaultDiscountPolicy(conditions) {
     override fun getDiscountAmount(screening: Screening): Money {
         var result = Money.ZERO
 
