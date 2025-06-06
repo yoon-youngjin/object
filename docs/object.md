@@ -747,3 +747,7 @@ class OverlappedDiscountPolicy(
 
 이러한 설계를 통해 객체지향에서는 중복 할인이라는 중요한 개념을 명시적으로 표현하는것이 가능해진다.
 
+---
+
+코드를 재사용하는 경우(Movie, DiscountPolicy)에는 상속보다는 합성을 선호하는 것이 옳지만 다형성을 위해 인터페이스를 재사용하는 경우(DiscountPolicy, AmountDiscountPolicy, PercentDiscountPolicy)에는 상속과 합성을 함께 조합해서 사용할 수 밖에 없다.
+
