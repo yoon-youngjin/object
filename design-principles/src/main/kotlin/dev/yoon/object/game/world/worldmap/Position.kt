@@ -1,4 +1,4 @@
-package dev.yoon.`object`
+package dev.yoon.`object`.game.world.worldmap
 
 data class Position(
     val x: Int,

@@ -1,4 +1,6 @@
-package dev.yoon.`object`
+package dev.yoon.`object`.game.world.worldmap
+
+import kotlin.random.Random
 
 data class Size(
     val width: Int,
@@ -14,6 +16,11 @@ data class Size(
 
     fun indexOf(position: Position): Int {
         return position.x + position.y * width
+    }
+
+    fun anyPosition(): Position {
+        val random = Random
+        return Position.of(random.nextInt(width), random.nextInt(height))
     }
 
     companion object {

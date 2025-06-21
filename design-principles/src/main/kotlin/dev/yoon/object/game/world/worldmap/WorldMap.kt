@@ -1,9 +1,12 @@
-package dev.yoon.`object`
+package dev.yoon.`object`.game.world.worldmap
+
+import dev.yoon.`object`.game.world.item.Item
+import dev.yoon.`object`.game.world.item.Target
 
 data class WorldMap(
     val size: Size,
     val rooms: ArrayList<Room>
-) {
+): Target {
     fun isBlocked(position: Position): Boolean {
         return isExcluded(position) || roomAt(position) == null
     }
@@ -27,6 +30,15 @@ data class WorldMap(
                 rooms = result,
             )
         }
+    }
+
+    override fun add(item: Item) {
+        val position: Position = size.anyPosition()
+        if (isBlocked(position)) {
+            return
+        }
+
+        roomAt(position)!!.add(item)
     }
 }
 

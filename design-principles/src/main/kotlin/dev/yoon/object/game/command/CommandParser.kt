@@ -1,4 +1,6 @@
-package dev.yoon.`object`
+package dev.yoon.`object`.game.command
+
+import dev.yoon.`object`.game.world.worldmap.Direction
 
 object CommandParser {
     fun parseCommand(input: String): Command {
